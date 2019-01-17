@@ -1,6 +1,6 @@
 part of 'example.dart';
 
-// crazy goes here!
+// One `write` method can handle all of the types in a given library.
 bool _$writeExample(Object object, JsonWriter writer) {
   if (object is Example) {
     writer.startMap();
