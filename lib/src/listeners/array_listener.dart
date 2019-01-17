@@ -21,6 +21,8 @@ ArrayListener<T> convertArray<S, T>({
 }) =>
     _ConvertArrayListener(convert, skipConvertOnNull ?? true, customListener);
 
+// TODO(kevmoo): consider splitting this into two classes: one for the simple
+//               converter case and one for the child listener
 class _ConvertArrayListener<S, T> extends ArrayListener<T> {
   final bool skipConvertOnNull;
   final T Function(S) convert;

@@ -18,7 +18,7 @@ bool _$FunWriter(Object object, JsonWriter writer) {
   return false;
 }
 
-class _FunListener extends CustomObjectListenerBase<Fun> {
+class _FunListener extends CustomObjectReader<Fun> {
   int _a;
   String _b;
   bool _c;

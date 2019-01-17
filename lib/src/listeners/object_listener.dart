@@ -31,6 +31,8 @@ ObjectListener<K, V> convertObject<K, V>(
     _ConvertObjectListener(
         keyConvert, valueConvert, skipConvertOnNull ?? true, customListener);
 
+// TODO(kevmoo): consider splitting this into two classes: one for the simple
+//               converter case and one for the child listener
 class _ConvertObjectListener<K, V> extends ObjectListener<K, V> {
   final bool skipConvertOnNull;
   final K Function(String) keyConvert;

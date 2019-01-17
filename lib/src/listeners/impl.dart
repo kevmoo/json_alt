@@ -61,6 +61,10 @@ abstract class JsonReaderImpl<T> implements JsonReader<T> {
   @override
   void handleNull() => _listener.handleNull();
 
+  //
+  // Handle objects (Map)
+  //
+
   @override
   void objectStart() {
     _listeners.add(_listener.objectStart());
@@ -79,6 +83,10 @@ abstract class JsonReaderImpl<T> implements JsonReader<T> {
     _writeStorage(objListener.result);
   }
 
+  //
+  // Handle arrays (List)
+  //
+
   @override
   void arrayStart() {
     _listeners.add(_listener.arrayStart());
@@ -94,6 +102,11 @@ abstract class JsonReaderImpl<T> implements JsonReader<T> {
     _writeStorage(arrayListener.result);
   }
 
+  //
+  // Helpers
+  //
+
+  /// Write [value] to the current listener's storage.
   void _writeStorage(Object value) {
     var listener = _listener;
     if (listener is JsonListenerWithStorage) {

@@ -2,38 +2,10 @@ import 'impl.dart';
 import 'json_listener.dart';
 import 'json_reader.dart';
 
-JsonReader<T> createCustomJsonReader<T>(CustomObjectListenerBase<T> base) =>
+JsonReader<T> createCustomJsonReader<T>(CustomObjectReader<T> base) =>
     _CustomObjectListenerRoot(base);
 
-class _CustomObjectListenerRoot<T> extends JsonReaderImpl<T> {
-  final CustomObjectListenerBase<T> _rootListener;
-
-  _CustomObjectListenerRoot(this._rootListener)
-      : super(_ObjectProxy(_rootListener));
-
-  @override
-  T get result => _rootListener.result;
-}
-
-class _ObjectProxy<T> extends JsonListener<T>
-    implements JsonListenerWithStorage<T> {
-  final CustomObjectListenerBase<T> _rootListener;
-
-  _ObjectProxy(this._rootListener);
-
-  @override
-  JsonObjectListener objectStart() => _rootListener;
-
-  @override
-  T get result => throw UnsupportedError('Should never be called!');
-
-  @override
-  void writeValue(Object value) {
-    assert(value is T);
-  }
-}
-
-abstract class CustomObjectListenerBase<T> extends BaseListener<T>
+abstract class CustomObjectReader<T> extends BaseListener<T>
     implements JsonObjectListener<T> {
   T _result;
 
@@ -62,4 +34,32 @@ abstract class CustomObjectListenerBase<T> extends BaseListener<T>
   }
 
   T create();
+}
+
+class _CustomObjectListenerRoot<T> extends JsonReaderImpl<T> {
+  final CustomObjectReader<T> _rootListener;
+
+  _CustomObjectListenerRoot(this._rootListener)
+      : super(_ObjectProxy(_rootListener));
+
+  @override
+  T get result => _rootListener.result;
+}
+
+class _ObjectProxy<T> extends JsonListener<T>
+    implements JsonListenerWithStorage<T> {
+  final CustomObjectReader<T> _rootListener;
+
+  _ObjectProxy(this._rootListener);
+
+  @override
+  JsonObjectListener objectStart() => _rootListener;
+
+  @override
+  T get result => throw UnsupportedError('Should never be called!');
+
+  @override
+  void writeValue(Object value) {
+    assert(value is T);
+  }
 }
