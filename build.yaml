@@ -1,0 +1,9 @@
+# Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          include:
+          - test/new_things/fun_class.**
+          - example/stats.**
