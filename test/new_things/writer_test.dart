@@ -4,7 +4,7 @@ import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
 import '../../example/example.dart';
-import 'new_values.dart';
+import 'example_test_values.dart';
 
 bool _writer(Object object, JsonWriter writer) {
   if (Example.writeJson(object, writer)) {
