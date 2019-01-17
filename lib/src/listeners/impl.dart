@@ -67,10 +67,10 @@ abstract class JsonReaderImpl<T> implements JsonReader<T> {
   }
 
   @override
-  void propertyName() => _listener.propertyName();
+  void propertyName() => (_listener as JsonObjectListener).propertyName();
 
   @override
-  void propertyValue() => _listener.propertyValue();
+  void propertyValue() => (_listener as JsonObjectListener).propertyValue();
 
   @override
   void objectEnd() {
@@ -85,7 +85,7 @@ abstract class JsonReaderImpl<T> implements JsonReader<T> {
   }
 
   @override
-  void arrayElement() => _listener.arrayElement();
+  void arrayElement() => (_listener as JsonArrayListener).arrayElement();
 
   @override
   void arrayEnd() {

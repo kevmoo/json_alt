@@ -12,13 +12,7 @@ abstract class JsonListener<T> {
 
   JsonObjectListener objectStart() => _notSupported();
 
-  void propertyName() => _notSupported();
-
-  void propertyValue() => _notSupported();
-
   JsonArrayListener arrayStart() => _notSupported();
-
-  void arrayElement() => _notSupported();
 
   T get result;
 
@@ -29,8 +23,14 @@ abstract class JsonListener<T> {
 
 abstract class JsonObjectListener<T> implements JsonListener<T> {
   void objectEnd();
+
+  void propertyName();
+
+  void propertyValue();
 }
 
 abstract class JsonArrayListener<T> implements JsonListener<T> {
   void arrayEnd();
+
+  void arrayElement();
 }
