@@ -37,21 +37,21 @@ Future<Map<String, int>> _work() async {
   return result;
 }
 
-final _impls = <String, Fun Function(List<int>)>{
+final _impls = <String, Example Function(List<int>)>{
   'sdk': sdkJsonFunction,
   'custom': _custom
 };
 
 final _fusedDecoder = sdk.utf8.decoder.fuse(sdk.json.decoder);
 
-Fun sdkJsonFunction(List<int> bytes) =>
-    Fun.fromJson(_fusedDecoder.convert(bytes) as Map<String, dynamic>);
+Example sdkJsonFunction(List<int> bytes) =>
+    Example.fromJson(_fusedDecoder.convert(bytes) as Map<String, dynamic>);
 
-final _customDecoder = MyJsonUtf8Decoder(reader: Fun.createReader());
+final _customDecoder = MyJsonUtf8Decoder(reader: Example.createReader());
 
-Fun _custom(List<int> bytes) => _customDecoder.convert(bytes);
+Example _custom(List<int> bytes) => _customDecoder.convert(bytes);
 
-Duration _read(Fun Function(List<int>) converter) {
+Duration _read(Example Function(List<int>) converter) {
   // create a list of `Fun` of length `length`
 
   var stopWatch = Stopwatch()..start();

@@ -1,6 +1,6 @@
-import '../../example/fun_class.dart';
+import '../../example/example.dart';
 
-export '../../example/fun_class.dart';
+export '../../example/example.dart';
 
 List _getValues() => [
       null,
@@ -14,18 +14,18 @@ List _getValues() => [
       [1, null, true, false, 'pi']
     ];
 
-Fun getExampleClass(int depth, int width) {
+Example getExampleClass(int depth, int width) {
   if (depth <= 0) {
     return null;
   }
 
-  return Fun(
+  return Example(
       a: 5,
       b: 'foo',
       c: true,
-      dates: List<DateTime>.generate(0, (e) => DateTime(e)),
+      dateList: List<DateTime>.generate(0, (e) => DateTime(e)),
       child: getExampleClass(depth - 1, width),
-      innerFun:
-          List<Fun>.generate(width, (i) => getExampleClass(depth - 1, width)))
+      nestedList: List<Example>.generate(
+          width, (i) => getExampleClass(depth - 1, width)))
     ..random = _getValues();
 }

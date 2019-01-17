@@ -28,7 +28,7 @@ ObjectListener<K, V> convertObject<K, V>(
   JsonObjectListener<V> Function() customListener,
   V Function(dynamic) valueConvert,
 }) =>
-    _ConvertObjectListener(
+    _ConvertObjectListener<K, V>(
         keyConvert, valueConvert, skipConvertOnNull ?? true, customListener);
 
 // TODO(kevmoo): consider splitting this into two classes: one for the simple

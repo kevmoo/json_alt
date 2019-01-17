@@ -47,7 +47,7 @@ final _unifiedEncoder = sdk.JsonUtf8Encoder();
 final _customFun = JsonUtf8Encoder(writer: _writer);
 
 bool _writer(Object object, JsonWriter writer) {
-  if (Fun.writeJson(object, writer)) {
+  if (Example.writeJson(object, writer)) {
     return true;
   }
 

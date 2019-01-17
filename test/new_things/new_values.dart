@@ -1,9 +1,9 @@
-import '../../example/fun_class.dart';
+import '../../example/example.dart';
 
-final _empty = Fun(),
-    _oneField = Fun(a: 41),
-    _simple = Fun(a: 42, b: 'hello', c: true);
-final _withDates = Fun(dates: [DateTime(1979), null]);
+final _empty = Example(),
+    _oneField = Example(a: 41),
+    _simple = Example(a: 42, b: 'hello', c: true);
+final _withDates = Example(dateList: [DateTime(1979), null]);
 
 final _complexJson = const [
   {
@@ -32,9 +32,9 @@ final newTestItems = {
   'empty': _empty,
   'one field': _oneField,
   'simple': _simple,
-  'with child': Fun(child: _empty),
-  'nested': Fun(a: 3, innerFun: [_empty, _oneField, _simple]),
-  'nested map': Fun(a: 3, funMap: {
+  'with child': Example(child: _empty),
+  'nested': Example(a: 3, nestedList: [_empty, _oneField, _simple]),
+  'nested map': Example(a: 3, nestedMap: {
     'null': null,
     'empty': _empty,
     'one field': _oneField,

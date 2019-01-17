@@ -5,5 +5,5 @@ targets:
       json_serializable:
         generate_for:
           include:
-          - test/new_things/fun_class.**
-          - example/stats.**
+          - example/example.**
+          - benchmark/src/stats.**

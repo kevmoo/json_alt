@@ -3,7 +3,7 @@ import 'dart:convert' as sdk;
 import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
-import '../../example/fun_class.dart';
+import '../../example/example.dart';
 import 'new_values.dart';
 
 void main() {
@@ -22,13 +22,13 @@ void main() {
   });
 
   void testPair(k, v) {
-    if (v is! Fun) {
+    if (v is! Example) {
       return;
     }
     final sdkString = sdk.json.encode(v);
     test(k, () {
       final decodedObject =
-          parseJsonExperimental(sdkString, Fun.createReader());
+          parseJsonExperimental(sdkString, Example.createReader());
 
       try {
         final reEncodedString = sdk.json.encode(decodedObject);

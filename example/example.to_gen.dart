@@ -1,16 +1,16 @@
-part of 'fun_class.dart';
+part of 'example.dart';
 
 // crazy goes here!
 bool _$FunWriter(Object object, JsonWriter writer) {
-  if (object is Fun) {
+  if (object is Example) {
     writer.startMap();
     writer.writeKeyValue('a', object.a);
     writer.writeKeyValue('b', object.b);
     writer.writeKeyValue('c', object.c);
     writer.writeKeyValue('child', object.child);
-    writer.writeKeyValue('innerFun', object.innerFun);
-    writer.writeKeyValue('funMap', object.funMap);
-    writer.writeKeyValue('dates', object.dates);
+    writer.writeKeyValue('nestedList', object.nestedList);
+    writer.writeKeyValue('nestedMap', object.nestedMap);
+    writer.writeKeyValue('dateList', object.dateList);
     writer.writeKeyValue('random', object.random);
     writer.endMap();
     return true;
@@ -18,14 +18,14 @@ bool _$FunWriter(Object object, JsonWriter writer) {
   return false;
 }
 
-class _FunListener extends CustomObjectReader<Fun> {
+class _FunListener extends CustomObjectReader<Example> {
   int _a;
   String _b;
   bool _c;
-  Fun _child;
-  List<Fun> _innerFun;
-  List<DateTime> _dates;
-  Map<String, Fun> _funMap;
+  Example _child;
+  List<Example> _nestedList;
+  List<DateTime> _dateList;
+  Map<String, Example> _nestedMap;
 
   @override
   void handleNumber(num value) {
@@ -61,16 +61,16 @@ class _FunListener extends CustomObjectReader<Fun> {
   void propertyValue() {
     switch (key) {
       case 'child':
-        _child = storage as Fun;
+        _child = storage as Example;
         break;
-      case 'innerFun':
-        _innerFun = storage as List<Fun>;
+      case 'nestedList':
+        _nestedList = storage as List<Example>;
         break;
-      case 'dates':
-        _dates = storage as List<DateTime>;
+      case 'dateList':
+        _dateList = storage as List<DateTime>;
         break;
-      case 'funMap':
-        _funMap = storage as Map<String, Fun>;
+      case 'nestedMap':
+        _nestedMap = storage as Map<String, Example>;
         break;
       case 'a':
       case 'b':
@@ -88,8 +88,8 @@ class _FunListener extends CustomObjectReader<Fun> {
     switch (key) {
       case 'child':
         return _FunListener();
-      case 'funMap':
-        return convertObject<String, Fun>(
+      case 'nestedMap':
+        return convertObject<String, Example>(
           (k) => k,
           customListener: () => _FunListener(),
           //valueConvert: (e) => Fun.fromJson(e as Map<String, dynamic>),
@@ -101,10 +101,10 @@ class _FunListener extends CustomObjectReader<Fun> {
   @override
   JsonArrayListener arrayStart() {
     switch (key) {
-      case 'dates':
+      case 'dateList':
         return convertArray<String, DateTime>(convert: DateTime.parse);
-      case 'innerFun':
-        return convertArray<Map<String, dynamic>, Fun>(
+      case 'nestedList':
+        return convertArray<Map<String, dynamic>, Example>(
             //convert: (e) => Fun.fromJson(e),
             customListener: () => _FunListener());
     }
@@ -112,12 +112,12 @@ class _FunListener extends CustomObjectReader<Fun> {
   }
 
   @override
-  Fun create() => Fun(
+  Example create() => Example(
       a: _a,
       b: _b,
       c: _c,
-      innerFun: _innerFun,
+      nestedList: _nestedList,
       child: _child,
-      dates: _dates,
-      funMap: _funMap);
+      dateList: _dateList,
+      nestedMap: _nestedMap);
 }
