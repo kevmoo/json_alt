@@ -1,7 +1,7 @@
 part of 'example.dart';
 
 // crazy goes here!
-bool _$FunWriter(Object object, JsonWriter writer) {
+bool _$writeExample(Object object, JsonWriter writer) {
   if (object is Example) {
     writer.startMap();
     writer.writeKeyValue('a', object.a);
@@ -18,7 +18,7 @@ bool _$FunWriter(Object object, JsonWriter writer) {
   return false;
 }
 
-class _FunListener extends CustomObjectReader<Example> {
+class _$ExampleObjectReader extends CustomObjectReader<Example> {
   int _a;
   String _b;
   bool _c;
@@ -28,38 +28,43 @@ class _FunListener extends CustomObjectReader<Example> {
   Map<String, Example> _nestedMap;
 
   @override
-  void handleNumber(num value) {
+  JsonArrayListener arrayStart() {
     switch (key) {
-      case 'a':
-        _a = value as int;
-        return;
+      case 'dateList':
+        return convertArray<String, DateTime>(convert: DateTime.parse);
+      case 'nestedList':
+        return convertArray<Map<String, dynamic>, Example>(
+            customListener: () => _$ExampleObjectReader());
     }
-    super.handleNumber(value);
+    return super.arrayStart();
   }
 
   @override
-  void handleString(String value) {
+  JsonObjectListener objectStart() {
     switch (key) {
-      case 'b':
-        _b = value;
-        return;
+      case 'child':
+        return _$ExampleObjectReader();
+      case 'nestedMap':
+        return convertObject<String, Example>(
+          (k) => k,
+          customListener: () => _$ExampleObjectReader(),
+        );
     }
-    super.handleString(value);
-  }
-
-  @override
-  void handleBool(bool value) {
-    switch (key) {
-      case 'c':
-        _c = value;
-        return;
-    }
-    super.handleBool(value);
+    return super.objectStart();
   }
 
   @override
   void propertyValue() {
     switch (key) {
+      case 'a':
+        _a = storage as int;
+        break;
+      case 'b':
+        _b = storage as String;
+        break;
+      case 'c':
+        _c = storage as bool;
+        break;
       case 'child':
         _child = storage as Example;
         break;
@@ -72,43 +77,10 @@ class _FunListener extends CustomObjectReader<Example> {
       case 'nestedMap':
         _nestedMap = storage as Map<String, Example>;
         break;
-      case 'a':
-      case 'b':
-      case 'c':
-        // handled closer to the supported type to avoid casting here
-        break;
       default:
       // throw? We have properties that are not supported
     }
     super.propertyValue();
-  }
-
-  @override
-  JsonObjectListener objectStart() {
-    switch (key) {
-      case 'child':
-        return _FunListener();
-      case 'nestedMap':
-        return convertObject<String, Example>(
-          (k) => k,
-          customListener: () => _FunListener(),
-          //valueConvert: (e) => Fun.fromJson(e as Map<String, dynamic>),
-        );
-    }
-    return super.objectStart();
-  }
-
-  @override
-  JsonArrayListener arrayStart() {
-    switch (key) {
-      case 'dateList':
-        return convertArray<String, DateTime>(convert: DateTime.parse);
-      case 'nestedList':
-        return convertArray<Map<String, dynamic>, Example>(
-            //convert: (e) => Fun.fromJson(e),
-            customListener: () => _FunListener());
-    }
-    return super.arrayStart();
   }
 
   @override

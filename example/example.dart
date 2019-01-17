@@ -35,8 +35,8 @@ class Example {
   Map<String, dynamic> toJson() => _$ExampleToJson(this);
 
   static bool writeJson(Object object, JsonWriter writer) =>
-      _$FunWriter(object, writer);
+      _$writeExample(object, writer);
 
   static JsonReader<Example> createReader() =>
-      createCustomJsonReader(_FunListener());
+      createCustomJsonReader(_$ExampleObjectReader());
 }
