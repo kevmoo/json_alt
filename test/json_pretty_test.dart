@@ -5,7 +5,7 @@
 // Note: This test relies on LF line endings in the source file.
 // It requires an entry in the .gitattributes file.
 
-// ignore_for_file: slash_for_doc_comments,prefer_single_quotes
+// ignore_for_file: prefer_single_quotes
 
 import 'package:test/test.dart';
 import 'package:json_alt/json.dart';

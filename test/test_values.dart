@@ -1,4 +1,4 @@
-// ignore_for_file: slash_for_doc_comments,prefer_single_quotes
+// ignore_for_file: prefer_single_quotes
 
 Iterable<List> get expandedTestValues => testValues.expand((test) {
       var object = test[0];

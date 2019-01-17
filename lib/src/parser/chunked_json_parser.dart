@@ -1,4 +1,4 @@
-// ignore_for_file: slash_for_doc_comments,prefer_single_quotes,constant_identifier_names,omit_local_variable_types
+// ignore_for_file: prefer_single_quotes,constant_identifier_names,omit_local_variable_types
 
 // TODO: open an issue on this. Very weird...
 // ignore_for_file: invariant_booleans

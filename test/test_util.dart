@@ -1,4 +1,4 @@
-// ignore_for_file: slash_for_doc_comments,prefer_single_quotes
+// ignore_for_file: prefer_single_quotes
 
 import 'package:test/test.dart';
 import 'package:json_alt/json.dart';

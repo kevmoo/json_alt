@@ -1,4 +1,3 @@
-// ignore_for_file: annotate_overrides
 import 'package:json_alt/shared_things.dart';
 import 'package:json_annotation/json_annotation.dart';
 
