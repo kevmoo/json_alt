@@ -1,4 +1,4 @@
-import 'fun_class.dart';
+import '../../example/fun_class.dart';
 
 final _empty = Fun(),
     _oneField = Fun(a: 41),

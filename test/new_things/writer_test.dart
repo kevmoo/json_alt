@@ -1,8 +1,9 @@
 import 'dart:convert' as sdk;
+
 import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
-import 'fun_class.dart';
+import '../../example/fun_class.dart';
 import 'new_values.dart';
 
 bool _writer(Object object, JsonWriter writer) {

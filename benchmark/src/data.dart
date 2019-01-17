@@ -1,6 +1,6 @@
-import '../../test/new_things/fun_class.dart';
+import '../../example/fun_class.dart';
 
-export '../../test/new_things/fun_class.dart';
+export '../../example/fun_class.dart';
 
 List _getValues() => [
       null,
