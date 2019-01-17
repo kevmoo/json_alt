@@ -7,7 +7,7 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 import "src/expect.dart";
 import 'test_util.dart';

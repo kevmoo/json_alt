@@ -4,7 +4,7 @@
 
 // ignore_for_file: prefer_single_quotes
 
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
 import "src/expect.dart";

@@ -9,7 +9,7 @@ Created from templates made available by Stagehand under a BSD-style
 
 A simple usage example:
 
-    import 'package:json/json.dart';
+    import 'package:json_alt/json.dart';
 
     main() {
       var awesome = new Awesome();

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert' as sdk;
 
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 import 'src/bench_shared.dart';
 import 'src/data.dart';

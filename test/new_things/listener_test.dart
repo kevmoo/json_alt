@@ -1,6 +1,6 @@
 import 'dart:convert' as sdk;
 
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
 import 'fun_class.dart';
@@ -27,7 +27,8 @@ void main() {
     }
     final sdkString = sdk.json.encode(v);
     test(k, () {
-      final decodedObject = parseJsonExperimental(sdkString, Fun.createReader());
+      final decodedObject =
+          parseJsonExperimental(sdkString, Fun.createReader());
 
       try {
         final reEncodedString = sdk.json.encode(decodedObject);

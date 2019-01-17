@@ -5,7 +5,7 @@
 // ignore_for_file: slash_for_doc_comments,prefer_single_quotes,omit_local_variable_types
 
 import 'package:test/test.dart';
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 import "src/expect.dart";
 

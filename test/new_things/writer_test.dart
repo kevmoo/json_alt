@@ -1,5 +1,5 @@
 import 'dart:convert' as sdk;
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 import 'package:test/test.dart';
 
 import 'fun_class.dart';

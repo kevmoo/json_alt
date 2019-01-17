@@ -18,7 +18,6 @@ bool _$FunWriter(Object object, JsonWriter writer) {
   return false;
 }
 
-
 class _FunListener extends CustomObjectListenerBase<Fun> {
   int _a;
   String _b;
@@ -106,9 +105,8 @@ class _FunListener extends CustomObjectListenerBase<Fun> {
         return convertArray<String, DateTime>(convert: DateTime.parse);
       case 'innerFun':
         return convertArray<Map<String, dynamic>, Fun>(
-          //convert: (e) => Fun.fromJson(e),
-          customListener: () => _FunListener()
-        );
+            //convert: (e) => Fun.fromJson(e),
+            customListener: () => _FunListener());
     }
     return super.arrayStart();
   }

@@ -1,4 +1,4 @@
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 void main() {
   final values = [

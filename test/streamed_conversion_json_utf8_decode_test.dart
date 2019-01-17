@@ -7,7 +7,7 @@
 import 'dart:async';
 
 import 'package:test/test.dart';
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 import 'test_util.dart';
 import 'unicode_test_values.dart';

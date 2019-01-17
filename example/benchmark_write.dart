@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert' as sdk;
 
-import 'package:json/json.dart';
+import 'package:json_alt/json.dart';
 
 import 'src/bench_shared.dart';
 import 'src/data.dart';
@@ -59,7 +59,9 @@ bool _writer(Object object, JsonWriter writer) {
   return false;
 }
 
-final _input = [List.generate(100, (i) => getExampleClass(3,5), growable: false)];
+final _input = [
+  List.generate(100, (i) => getExampleClass(3, 5), growable: false)
+];
 
 int _lastByteValue;
 
