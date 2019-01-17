@@ -1,22 +1,12 @@
-# jsonz
+**This is an experiment.**
 
-A library for Dart developers.
+A copy and mutate of the JSON implementation in
+[dart:convert](https://api.dartlang.org/stable/2.1.0/dart-convert/dart-convert-library.html)
+to support encode/decode of Dart class to/from JSON without creating
+intermediate `dart:core` types.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Work towards
 
-## Usage
+- https://github.com/dart-lang/json_serializable/issues/301
+- https://github.com/dart-lang/json_serializable/issues/355
 
-A simple usage example:
-
-    import 'package:json_alt/json.dart';
-
-    main() {
-      var awesome = new Awesome();
-    }
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
