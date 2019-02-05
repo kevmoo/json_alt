@@ -8,7 +8,19 @@ import 'src/data.dart';
 import 'src/stats.dart';
 
 void main() async {
+  assert(_assertMatching());
   await runBench(_work);
+}
+
+bool _assertMatching() {
+  var values = <String, List<int>>{};
+  for (var entry in _impls.entries) {
+    values[entry.key] = entry.value.convert(_input);
+  }
+
+  print(
+      values.entries.map((e) => [e.key, e.value.length].join('\t')).join('\n'));
+  return true;
 }
 
 Future<Map<String, int>> _work() async {
