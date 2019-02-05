@@ -26,6 +26,7 @@ class _$ExampleObjectReader extends CustomObjectReader<Example> {
   List<Example> _nestedList;
   List<DateTime> _dateList;
   Map<String, Example> _nestedMap;
+  Object _random;
 
   @override
   JsonArrayListener arrayStart() {
@@ -77,19 +78,23 @@ class _$ExampleObjectReader extends CustomObjectReader<Example> {
       case 'nestedMap':
         _nestedMap = storage as Map<String, Example>;
         break;
+      case 'random':
+        _random = storage;
+        break;
       default:
-      // throw? We have properties that are not supported
+        throw UnimplementedError('have not done `$key`');
     }
     super.propertyValue();
   }
 
   @override
   Example create() => Example(
-      a: _a,
-      b: _b,
-      c: _c,
-      nestedList: _nestedList,
-      child: _child,
-      dateList: _dateList,
-      nestedMap: _nestedMap);
+        a: _a,
+        b: _b,
+        c: _c,
+        nestedList: _nestedList,
+        child: _child,
+        dateList: _dateList,
+        nestedMap: _nestedMap,
+      )..random = _random;
 }

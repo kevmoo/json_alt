@@ -11,7 +11,24 @@ final _inputBytes = sdk.JsonUtf8Encoder().convert(getExampleClass(6, 6));
 
 void main() async {
   print(_inputBytes.length);
+  assert(_ensureMatching());
   await runBench(_work);
+}
+
+bool _ensureMatching() {
+  var results = <String, String>{};
+  for (var output in _impls.entries) {
+    var result = output.value(_inputBytes);
+    results[output.key] = sdk.jsonEncode(result);
+  }
+
+  /*
+  print(results.entries
+      .map((e) => [e.key, e.value.length, e.value].join('\t'))
+      .join('\n'));
+      */
+
+  return results.values.skip(1).every((v) => v == results.values.first);
 }
 
 Future<Map<String, int>> _work() async {
