@@ -29,7 +29,6 @@ abstract class CustomObjectReader<T> extends BaseListener<T>
 
   @override
   void objectEnd() {
-    assert(_result == null);
     _result = create();
   }
 
