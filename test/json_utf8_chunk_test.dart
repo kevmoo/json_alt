@@ -21,15 +21,16 @@ void main() {
 
 // Create an UTF-8 sink from a chunked JSON decoder, then let [action]
 // put data into it, and check that what comes out is equal to [expect].
-void _jsonTest(String testName, Object expect, action(ByteConversionSink sink),
+void _jsonTest(
+    String testName, Object expect, Function(ByteConversionSink sink) action,
     [bool allowMalformed = false]) {
   _jsonParse(testName, (value) {
     Expect.equals(expect, value, "$testName:$value");
   }, action, allowMalformed);
 }
 
-void _jsonParse(
-    String testName, void check(Object arg), action(ByteConversionSink sink),
+void _jsonParse(String testName, void Function(Object arg) check,
+    Function(ByteConversionSink sink) action,
     [bool allowMalformed = false]) {
   var sink = ChunkedConversionSink.withCallback((values) {
     var value = values[0];
@@ -199,7 +200,7 @@ void _testAll() {
 // and throws otherwise.
 void _jsonMalformedTest(name, expect, List<int> codes) {
   // Helper method.
-  void test(name, expect, action(ByteConversionSink sink)) {
+  void test(name, expect, Function(ByteConversionSink sink) action) {
     t.test(name, () {
       var tag = "Malform:$name-$expect";
       {
@@ -255,7 +256,7 @@ void _jsonMalformedTest(name, expect, List<int> codes) {
 // Test that `codeString.codeUnits` fails to parse as UTF-8 JSON,
 // even with decoder not throwing on malformed encodings.
 void _jsonThrows(String name, String codeString) {
-  void testJsonThrows(String tag, action(ByteConversionSink thing)) {
+  void testJsonThrows(String tag, Function(ByteConversionSink thing) action) {
     // Not allowing malformed, expect throw.
     var sink = ChunkedConversionSink.withCallback((values) {
       Expect.fail(tag);

@@ -76,6 +76,8 @@ class _JsonStringStringifierPretty extends JsonStringStringifier
 
   @override
   void writeIndentation(int count) {
-    for (var i = 0; i < count; i++) writeString(_indent);
+    for (var i = 0; i < count; i++) {
+      writeString(_indent);
+    }
   }
 }

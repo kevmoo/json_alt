@@ -177,7 +177,7 @@ void _testStringifyErrors() {
   _expectThrowsJsonError(() => json.encode(a));
 }
 
-void _expectThrowsJsonError(void f()) {
+void _expectThrowsJsonError(void Function() f) {
   Expect.throws(f, (e) => e is JsonUnsupportedObjectError);
 }
 

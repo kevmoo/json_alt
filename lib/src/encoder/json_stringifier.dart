@@ -48,7 +48,7 @@ abstract class JsonStringifier implements JsonWriter {
   int _mapWritingDepth = 0;
   bool _writtenMapValue;
 
-  JsonStringifier(toEncodable(dynamic o), WriteJson jsonWriter)
+  JsonStringifier(Function(dynamic o) toEncodable, WriteJson jsonWriter)
       : _toEncodable = toEncodable ?? _defaultToEncodable,
         _jsonWriter = jsonWriter ?? _defaultJsonWriter;
 

@@ -52,7 +52,7 @@ class JsonUtf8Encoder extends Converter<Object, List<int>> {
   /// object.
   JsonUtf8Encoder(
       {String indent,
-      toEncodable(object),
+      Function(Object) toEncodable,
       WriteJson writer,
       int bufferSize = _defaultBufferSize})
       : _indent = _utf8Encode(indent),

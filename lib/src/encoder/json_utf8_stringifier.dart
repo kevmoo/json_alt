@@ -39,7 +39,7 @@ class JsonUtf8Stringifier extends JsonStringifier {
       ToEncodable toEncodable,
       WriteJson writer,
       int bufferSize,
-      void addChunk(Uint8List chunk, int start, int end)) {
+      void Function(Uint8List chunk, int start, int end) addChunk) {
     JsonUtf8Stringifier stringifier;
     if (indent != null) {
       stringifier = _JsonUtf8StringifierPretty(
@@ -159,7 +159,7 @@ class _JsonUtf8StringifierPretty extends JsonUtf8Stringifier
       WriteJson writer,
       this._indent,
       int bufferSize,
-      void addChunk(Uint8List buffer, int start, int end))
+      void Function(Uint8List buffer, int start, int end) addChunk)
       : super(toEncodable, writer, bufferSize, addChunk);
 
   @override

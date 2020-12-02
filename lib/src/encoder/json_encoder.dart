@@ -42,9 +42,9 @@ class JsonEncoder extends Converter<Object, String> {
   ///
   /// If [indent] is `null`, the output is encoded as a single line.
   const JsonEncoder(
-      {toEncodable(object),
+      {Function(Object) toEncodable,
       this.indent,
-      bool writer(Object source, JsonWriter writer)})
+      bool Function(Object source, JsonWriter writer) writer})
       : _toEncodable = toEncodable,
         _jsonWriter = writer;
 

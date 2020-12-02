@@ -12,7 +12,7 @@ class Pair<T> {
   const Pair(this.bytes, this.target);
 }
 
-void testAll<T>(Iterable<T> items, testBody(T item)) {
+void testAll<T>(Iterable<T> items, Function(T item) testBody) {
   var count = 1;
   for (var item in items) {
     test('item ${count++}', () => testBody(item));

@@ -63,7 +63,9 @@ class _ConvertObjectListener<K, V> extends ObjectListener<K, V> {
     assert(!container.containsKey(_key));
     container[_key] = (storage == null && skipConvertOnNull)
         ? null
-        : valueConvert == null ? storage as V : valueConvert(storage);
+        : valueConvert == null
+            ? storage as V
+            : valueConvert(storage);
   }
 
   @override

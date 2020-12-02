@@ -11,7 +11,7 @@ class MyJsonCodec extends Codec<Object, String> {
   final String indent;
   final ToEncodable _toEncodable;
 
-  const MyJsonCodec({toEncodable(Object object), this.indent})
+  const MyJsonCodec({Function(Object object) toEncodable, this.indent})
       : _toEncodable = toEncodable;
 
   /// Parses the string and returns the resulting Json object.

@@ -261,7 +261,8 @@ class Expect {
   /// the type of the exception you could write this:
   ///
   ///     Expect.throws(myThrowingFunction, (e) => e is MyException);
-  static void throws(void f(), [_CheckExceptionFn check, String reason]) {
+  static void throws(void Function() f,
+      [_CheckExceptionFn check, String reason]) {
     String msg = reason == null ? "" : "($reason)";
     if (f is! _Nullary) {
       // Only throws from executing the function body should count as throwing.
@@ -281,44 +282,44 @@ class Expect {
     t.fail('Expect.throws$msg fails: Did not throw');
   }
 
-  static void throwsArgumentError(void f(), [String reason]) {
+  static void throwsArgumentError(void Function() f, [String reason]) {
     Expect.throws(
         f, (error) => error is ArgumentError, reason ?? "ArgumentError");
   }
 
-  static void throwsAssertionError(void f(), [String reason]) {
+  static void throwsAssertionError(void Function() f, [String reason]) {
     Expect.throws(
         f, (error) => error is AssertionError, reason ?? "AssertionError");
   }
 
-  static void throwsCastError(void f(), [String reason]) {
+  static void throwsCastError(void Function() f, [String reason]) {
     // ignore: deprecated_member_use
     Expect.throws(f, (error) => error is CastError, reason ?? "CastError");
   }
 
-  static void throwsFormatException(void f(), [String reason]) {
+  static void throwsFormatException(void Function() f, [String reason]) {
     Expect.throws(
         f, (error) => error is FormatException, reason ?? "FormatException");
   }
 
-  static void throwsNoSuchMethodError(void f(), [String reason]) {
+  static void throwsNoSuchMethodError(void Function() f, [String reason]) {
     Expect.throws(f, (error) => error is NoSuchMethodError,
         reason ?? "NoSuchMethodError");
   }
 
-  static void throwsRangeError(void f(), [String reason]) {
+  static void throwsRangeError(void Function() f, [String reason]) {
     Expect.throws(f, (error) => error is RangeError, reason ?? "RangeError");
   }
 
-  static void throwsStateError(void f(), [String reason]) {
+  static void throwsStateError(void Function() f, [String reason]) {
     Expect.throws(f, (error) => error is StateError, reason ?? "StateError");
   }
 
-  static void throwsTypeError(void f(), [String reason]) {
+  static void throwsTypeError(void Function() f, [String reason]) {
     Expect.throws(f, (error) => error is TypeError, reason ?? "TypeError");
   }
 
-  static void throwsUnsupportedError(void f(), [String reason]) {
+  static void throwsUnsupportedError(void Function() f, [String reason]) {
     Expect.throws(
         f, (error) => error is UnsupportedError, reason ?? "UnsupportedError");
   }
