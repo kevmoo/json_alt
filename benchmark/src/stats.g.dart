@@ -8,13 +8,14 @@ part of 'stats.dart';
 
 DateStats _$DateStatsFromJson(Map<String, dynamic> json) {
   return DateStats(
-      json['count'] as int,
-      json['mean'] == null ? null : DateTime.parse(json['mean'] as String),
-      json['median'] == null ? null : DateTime.parse(json['median'] as String),
-      json['max'] == null ? null : DateTime.parse(json['max'] as String),
-      json['min'] == null ? null : DateTime.parse(json['min'] as String),
-      json['standardDeviationDays'] as int,
-      json['standardErrorDays'] as int);
+    json['count'] as int,
+    json['mean'] == null ? null : DateTime.parse(json['mean'] as String),
+    json['median'] == null ? null : DateTime.parse(json['median'] as String),
+    json['max'] == null ? null : DateTime.parse(json['max'] as String),
+    json['min'] == null ? null : DateTime.parse(json['min'] as String),
+    json['standardDeviationDays'] as int,
+    json['standardErrorDays'] as int,
+  );
 }
 
 Map<String, dynamic> _$DateStatsToJson(DateStats instance) => <String, dynamic>{
@@ -24,12 +25,18 @@ Map<String, dynamic> _$DateStatsToJson(DateStats instance) => <String, dynamic>{
       'max': instance.max?.toIso8601String(),
       'min': instance.min?.toIso8601String(),
       'standardDeviationDays': instance.standardDeviationDays,
-      'standardErrorDays': instance.standardErrorDays
+      'standardErrorDays': instance.standardErrorDays,
     };
 
 Stats _$StatsFromJson(Map<String, dynamic> json) {
-  return Stats(json['count'] as int, json['mean'] as num, json['median'] as num,
-      json['max'] as num, json['min'] as num, json['standardDeviation'] as num);
+  return Stats(
+    json['count'] as int,
+    json['mean'] as num,
+    json['median'] as num,
+    json['max'] as num,
+    json['min'] as num,
+    json['standardDeviation'] as num,
+  );
 }
 
 Map<String, dynamic> _$StatsToJson(Stats instance) => <String, dynamic>{
@@ -38,5 +45,5 @@ Map<String, dynamic> _$StatsToJson(Stats instance) => <String, dynamic>{
       'median': instance.median,
       'max': instance.max,
       'min': instance.min,
-      'standardDeviation': instance.standardDeviation
+      'standardDeviation': instance.standardDeviation,
     };
