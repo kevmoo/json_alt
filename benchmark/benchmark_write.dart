@@ -49,7 +49,8 @@ Future<Map<String, int>> _work() async {
 final _impls = <String, Converter<Object, List<int>>>{
   'fused': _fusedEncoder,
   'unifed': _unifiedEncoder,
-  'custom': _customFun
+  'custom': _customFun,
+  'lrhn': LrhnConverter(),
 };
 
 final _fusedEncoder = sdk.json.encoder.fuse(sdk.utf8.encoder);
