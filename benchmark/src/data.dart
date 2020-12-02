@@ -20,12 +20,17 @@ Example getExampleClass(int depth, int width) {
   }
 
   return Example(
-      a: 5,
-      b: 'foo',
-      c: true,
-      dateList: List<DateTime>.generate(0, (e) => DateTime(e)),
-      child: getExampleClass(depth - 1, width),
-      nestedList: List<Example>.generate(
-          width, (i) => getExampleClass(depth - 1, width)))
-    ..random = _getValues();
+    a: 5,
+    b: 'foo',
+    c: true,
+    dateList: List<DateTime>.generate(0, (e) => DateTime(e)),
+    child: getExampleClass(depth - 1, width),
+    nestedList: List<Example>.generate(
+      width,
+      (i) => getExampleClass(depth - 1, width),
+    ),
+    nestedMap: {
+      for (var i = 0; i < width; i++) '$i': getExampleClass(depth - 1, width),
+    },
+  )..random = _getValues();
 }

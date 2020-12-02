@@ -73,7 +73,7 @@ bool _writer(Object object, JsonWriter writer) {
 }
 
 final _input = [
-  List.generate(100, (i) => getExampleClass(3, 5), growable: false)
+  List.generate(100, (i) => getExampleClass(3, 3), growable: false)
 ];
 
 int _lastByteValue;

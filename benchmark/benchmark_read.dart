@@ -7,7 +7,7 @@ import 'src/bench_shared.dart';
 import 'src/data.dart';
 import 'src/stats.dart';
 
-final _inputBytes = sdk.JsonUtf8Encoder().convert(getExampleClass(6, 6));
+final _inputBytes = sdk.JsonUtf8Encoder().convert(getExampleClass(4, 4));
 
 void main() async {
   print(_inputBytes.length);
