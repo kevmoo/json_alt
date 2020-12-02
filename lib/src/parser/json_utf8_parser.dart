@@ -67,7 +67,6 @@ class _Utf8StringBuffer {
   static const int INITIAL_CAPACITY = 32;
   // Partial state encoding.
   static const int MASK_TWO_BIT = 0x03;
-  static const int MASK_SIZE = MASK_TWO_BIT;
   static const int SHIFT_MISSING = 2;
   static const int SHIFT_VALUE = 4;
   static const int NO_PARTIAL = 0;

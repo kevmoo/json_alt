@@ -292,6 +292,7 @@ class Expect {
   }
 
   static void throwsCastError(void f(), [String reason]) {
+    // ignore: deprecated_member_use
     Expect.throws(f, (error) => error is CastError, reason ?? "CastError");
   }
 

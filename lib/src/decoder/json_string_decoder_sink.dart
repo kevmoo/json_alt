@@ -8,7 +8,7 @@ import 'json_utf8_decoder_sink.dart';
 ///
 /// The sink only creates one object, but its input can be chunked.
 class JsonStringDecoderSink extends StringConversionSinkBase {
-  JsonStringParser _parser;
+  final JsonStringParser _parser;
   final JsonReader _reader;
   final Sink<Object> _sink;
 
